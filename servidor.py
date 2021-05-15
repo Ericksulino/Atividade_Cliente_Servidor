@@ -1,6 +1,6 @@
 import socket
 host = 'localhost'
-port = 8000
+port = 8001
 addr = (host,port)
 serv_socket = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 serv_socket.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
@@ -13,6 +13,8 @@ print("aguardando mensagem...")
 
 while(True):
     recebe = con.recv(1024)
-    con.send('teste'.encode())
-    print('mensagemrecebida: '+ recebe.decode())
+    print('mensagem recebida: '+ recebe.decode())
+    enviar = input('digite uma mensagem para enviar ao cliente: ')
+    con.send(enviar.encode())
+    
 serv_socket.close()
