@@ -10,11 +10,11 @@ print("aguardando conexão...")
 con, cliente = serv_socket.accept()
 print("conectado")
 print("aguardando mensagem...")
-
-while(True):
+enviar = ''
+while(enviar!= 'sair'):
     recebe = con.recv(1024)
     print('mensagem recebida: '+ recebe.decode())
     enviar = input('digite uma mensagem para enviar ao cliente: ')
     con.send(enviar.encode())
-    
+
 serv_socket.close()
